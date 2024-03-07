@@ -69,19 +69,19 @@ import javax.print.DocFlavor.STRING;
         public void calculateProbabilities(List probs) {				
             int totalChars = 0;
 
-            // Calculate total number of characters
+            
             for (int i = 0; i < probs.getSize(); i++) {
                 totalChars += probs.get(i).count;
             }
         
             double cumulativeProbability = 0;
         
-            // Calculate probabilities and cumulative probabilities
+            
             for (int i = 0; i < probs.getSize(); i++) {
                 CharData charData = probs.get(i);
-                charData.p = (double) charData.count / totalChars;  // Set probability
-                cumulativeProbability += charData.p;  // Update cumulative probability
-                charData.cp = cumulativeProbability;  // Set cumulative probability
+                charData.p = (double) charData.count / totalChars;  
+                cumulativeProbability += charData.p;  
+                charData.cp = cumulativeProbability;  
             }
         }
 
@@ -96,12 +96,12 @@ import javax.print.DocFlavor.STRING;
             while (true) {
                 try {
                     charData = probs.get(index++);
-                    cumulativeProbability += charData.p; // Assuming 'p' is the probability field in CharData
+                    cumulativeProbability += charData.p; 
                     if (rand <= cumulativeProbability) {
-                        return charData.chr; // Directly access the character field
+                        return charData.chr; 
                     }
                 } catch (IndexOutOfBoundsException e) {
-                    break; // Reached the end of the list
+                    break; 
                 }
             }
 
